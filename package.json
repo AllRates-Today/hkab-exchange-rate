@@ -1,0 +1,76 @@
+{
+  "name": "hkab-exchange-rate",
+  "version": "1.3.27",
+  "description": "Indicative Hong Kong Association of Banks (Hong Kong) daily exchange rates — 22 currencies vs HKD, current table, archive from 2026. Zero-dependency Node.js/TypeScript client.",
+  "keywords": [
+    "hkab",
+    "hong-kong-association-of-banks",
+    "hong",
+    "kong",
+    "association",
+    "banks",
+    "exchange-rate",
+    "exchange-rates",
+    "exchangerate",
+    "exchange rate",
+    "exchange rates",
+    "hkd-exchange-rate",
+    "currency",
+    "forex",
+    "fx",
+    "hkd",
+    "currency-api",
+    "currency-exchange-rates",
+    "forex-api",
+    "currency-conversion",
+    "currency-exchange",
+    "currency-rates",
+    "bank-association",
+    "indicative-rates",
+    "hong-kong",
+    "api",
+    "typescript",
+    "money",
+    "convert",
+    "conversion",
+    "exchange",
+    "rate",
+    "accounting",
+    "utilities",
+    "number",
+    "cart",
+    "ecommerce"
+  ],
+  "homepage": "https://allratestoday.com/central-bank-rates-api/hkab/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AllRates-Today/hkab-exchange-rate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AllRates-Today/hkab-exchange-rate/issues"
+  },
+  "license": "MIT",
+  "author": "AllRatesToday <hello@allratestoday.com> (https://allratestoday.com)",
+  "type": "module",
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.mjs",
+      "require": "./index.cjs"
+    }
+  },
+  "files": [
+    "index.mjs",
+    "index.cjs",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "sideEffects": false
+}
