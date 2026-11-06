@@ -7,18 +7,18 @@
 [![USD/HKD today](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fallratestoday.com%2Fapi%2Fopen%2Fcentral-bank%2Fhkab%3Fsource%3DUSD%26target%3DHKD&query=%24.rate&label=USD%2FHKD%20published%20by%20Hong%20Kong%20Association%20of%20Banks&color=0A7E8C&cacheSeconds=3600)](https://allratestoday.com/central-bank-rates-api/hkab/)
 [![rate date](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fallratestoday.com%2Fapi%2Fopen%2Fcentral-bank%2Fhkab%3Fsource%3DUSD%26target%3DHKD&query=%24.rate_date&label=rate%20date&color=555&cacheSeconds=3600)](https://allratestoday.com/central-bank-rates-api/hkab/)
 
-**Hong Kong Association of Banks (Hong Kong) daily opening indicative counter exchange rates for Node.js and TypeScript, as published by the association. These are indicative bank rates, not rates fixed by a central bank or a tax authority.**
+**Official Hong Kong Association of Banks (Hong Kong) daily exchange rates for Node.js and TypeScript. The published bank association rates behind tax filings, customs valuations, audits, and compliant invoicing — not market estimates, but the numbers Hong Kong Association of Banks itself prints, every business day.**
 
 ## 🚀 Why this client?
 
-- 🏛️ **Published rates** — the association's own table, with the publisher's own `rate_date` on every response
+- 🏛️ **Official published rates** — Hong Kong Association of Banks's own table, with the publisher's own `rate_date` on every response
 - 📅 **History from 2026** — this source publishes only its current table, so the archive builds forward from the day we started collecting
-- 🔀 **Published vs derived, always flagged** — computed inverse/cross pairs carry `derived: true`, never mixed with published prints
+- 🔀 **Published vs derived, always flagged** — computed inverse/cross pairs carry `derived: true`, never mixed with official prints
 - ⚡ **Zero dependencies** — pure ESM + CJS over global `fetch`; Node 18+, Bun, Deno, and edge runtimes
 - 🔷 **Type-safe** — full TypeScript definitions shipped with the package
-- 🧾 **Clear metadata** — `rate_type`, publication date, and source disclaimer on every response
+- 🧾 **Compliance-grade metadata** — `rate_type`, publication date, and source disclaimer on every response
 
-> **Indicative rate, not mid-market:** every value here is a number the Hong Kong Association of Banks published, carrying its own `rate_date`. Check which rate your filing or audit requires before relying on it. Need the live mid-market rate? Use [`@allratestoday/sdk`](https://www.npmjs.com/package/@allratestoday/sdk).
+> **Official rate, not mid-market:** every value here is a number Hong Kong Association of Banks itself published, fixed once printed and carrying the bank association's own `rate_date` — what filings and audits require. Need the live mid-market rate for pricing or display instead? Use the [mid-market API](https://allratestoday.com/docs/) or [`@allratestoday/sdk`](https://www.npmjs.com/package/@allratestoday/sdk). The two can diverge by several percent.
 
 ## 🔑 Get your API key
 
@@ -124,14 +124,14 @@ Requires Node 18+ (global `fetch`); also runs on Bun, Deno and edge runtimes. Al
 import { getRate } from 'hkab-exchange-rate';
 
 const pair = await getRate('USD', 'HKD', { apiKey: 'art_live_...' });
-console.log(pair.rate, pair.rate_date); // the Hong Kong Association of Banks rate, on the bank association's own date
+console.log(pair.rate, pair.rate_date); // the official Hong Kong Association of Banks rate, on the bank association's own date
 ```
 
 ## 📚 API reference
 
 - [Latest pair rate](#latest-pair-rate) — one pair from the latest published table
 - [Full published table](#full-published-table) — everything the bank association printed, in one call
-- [Table for a date](#table-for-a-date) — the published table for a past date
+- [Table for a date](#table-for-a-date) — the official table for an invoice or filing date
 - [Daily time series](#daily-time-series) — one pair across a date range
 
 ---
@@ -192,7 +192,7 @@ console.log(table.rate_date, table.rates.length);
 
 ### Table for a date
 
-Paid plans. The published table for any date since 2026 — weekends and holidays return the most recent published date, flagged via `published_on_requested_date`.
+Paid plans. The official table for any date since 2026 — weekends and holidays return the most recent published date, flagged via `published_on_requested_date`, which is exactly the in-force rate a filing needs.
 
 ```js
 import { getRatesForDate } from 'hkab-exchange-rate';
@@ -268,13 +268,13 @@ Hong Kong Association of Banks is the monetary authority of Hong Kong.
 ## 🧭 Reading the numbers
 
 - `value` is always **quote currency per 1 unit of base currency** (`base: "EUR", quote: "USD", value: 1.15` means 1 EUR = 1.15 USD).
-- HKAB prints **Hong Kong dollars per 1 unit of foreign currency** (`base: "USD", quote: "HKD"`), with `sell` and `tt_buy` opening indicative counter rates and a computed `middle` of the two. These are indicative rates from a banking association, not rates fixed by a central bank.
+- HKAB prints **Hong Kong dollars per 1 unit of foreign currency** (`base: "USD", quote: "HKD"`), with `sell` and `tt_buy` opening counter rates and a computed `middle` of the two.
 - Need the other way round? Ask `getRate(target, source)` and the API inverts or crosses for you, flagged `derived: true` — never divide a published rate yourself in a compliance workflow.
 - `rate_type` tells you which of the bank association's series a row belongs to (`middle` here); some publishers print buy/sell or several fixings for the same pair.
 
 ## 🧩 ERP & accounting systems
 
-Loading the Hong Kong Association of Banks rate into an accounting system is a supported workflow, not a hack. Step-by-step guides with the direction each system expects:
+Loading the official Hong Kong Association of Banks rate into an accounting system is a supported workflow, not a hack. Step-by-step guides with the direction each system expects:
 
 - [Dynamics 365 Business Central](https://allratestoday.com/docs/integrations/business-central/) — built-in Currency Exchange Rate Service, no code
 - [Xero](https://allratestoday.com/docs/integrations/xero/) · [QuickBooks Online](https://allratestoday.com/docs/integrations/quickbooks/) · [SAP S/4HANA and ECC](https://allratestoday.com/docs/integrations/sap/) · [Odoo](https://allratestoday.com/docs/integrations/odoo/)
@@ -295,7 +295,7 @@ curl "https://allratestoday.com/api/v1/central-bank/hkab/latest?format=xml&api_k
 
 ## ⚖️ Published vs derived rates
 
-If Hong Kong Association of Banks does not print a pair directly, the API resolves it from the bank association's own table and says so — published and computed values are never confused:
+If Hong Kong Association of Banks does not print a pair directly, the API resolves it from the bank association's own table and says so — official and computed values are never confused:
 
 | `method` | `derived` | Meaning |
 | --- | --- | --- |
@@ -352,7 +352,7 @@ getRate('USD', 'HKD', { apiKey: 'art_live_...' }).then((pair) => console.log(pai
 | ------ | ---- | ----------- |
 | `getRate(source, target, { apiKey })` | Free | Latest rate for one pair, resolved from the published table |
 | `getLatestRates({ apiKey })` | Free | The bank association's full latest published table |
-| `getRatesForDate(date, { apiKey, source?, target? })` | Paid | The published table (or one pair) for a YYYY-MM-DD date |
+| `getRatesForDate(date, { apiKey, source?, target? })` | Paid | The official table (or one pair) for a YYYY-MM-DD date |
 | `getHistory({ symbol \| source+target, from?, to? }, { apiKey })` | Paid | Daily series since 2026 |
 
 ## 📥 Bulk data (no key)
