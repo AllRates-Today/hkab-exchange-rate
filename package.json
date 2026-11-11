@@ -1,6 +1,6 @@
 {
   "name": "hkab-exchange-rate",
-  "version": "1.3.29",
+  "version": "1.3.30",
   "description": "Official Hong Kong Association of Banks (Hong Kong) daily exchange rates — 22 currencies vs HKD, current table, archive from 2026. Zero-dependency Node.js/TypeScript client.",
   "keywords": [
     "hkab",
