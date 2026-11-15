@@ -32,7 +32,7 @@ The image is rendered live from the keyless endpoint, so it follows the bank ass
 
 <!-- daily-table:start -->
 <details>
-<summary>Table as text: published 2026-11-13 by Hong Kong Association of Banks — 66 rates, first 60 shown. Updated 2026-11-13.</summary>
+<summary>Table as text: published 2026-11-13 by Hong Kong Association of Banks — 66 rates, first 60 shown. Updated 2026-11-15.</summary>
 
 | Base | Quote | Type | Rate |
 | --- | --- | --- | ---: |
@@ -258,9 +258,9 @@ Hong Kong Association of Banks currently publishes rates covering **22 currencie
 
 ## 🏛️ Source
 
-Hong Kong Association of Banks is the monetary authority of Hong Kong.
+The Hong Kong Association of Banks is a statutory body created by the Hong Kong Association of Banks Ordinance (Cap. 364). It sets official Hong Kong dollar exchange rates at the opening of business each day, with a selling rate and a telegraphic transfer buying rate for each currency. Its selling rate is the conversion rate named in the Dutiable Commodities Ordinance and in the rules for cross-boundary cash declarations.
 
-- Publisher's own page: [Exchange rates](https://www.hkab.org.hk/en/rates/exchange-rates)
+- Publisher's own page: [HKAB exchange rates](https://www.hkab.org.hk/en/rates/exchange-rates) · [www.hkab.org.hk](https://www.hkab.org.hk)
 - Publication: every business day; the exact schedule, freshness status and any current delay are on the [Hong Kong Association of Banks rates page](https://allratestoday.com/central-bank-rates-api/hkab/)
 - Values are stored unmodified, with the publisher's own `rate_date` on every row — see the [methodology](https://allratestoday.com/official-rates-methodology/)
 
